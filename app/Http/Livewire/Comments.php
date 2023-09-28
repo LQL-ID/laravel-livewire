@@ -15,7 +15,7 @@ class Comments extends Component
      */
     public function mount()
     {
-        $initialComments = \App\Models\Comment::all();
+        $initialComments = \App\Models\Comment::latest()->get();
         $this->comments = $initialComments;
     }
 
@@ -26,11 +26,12 @@ class Comments extends Component
     {
         if ($this->newComment == "") return;
         
-        array_unshift($this->comments, [
+        $createComment = \App\Models\Comment::create([
             'body' => $this->newComment,
-            'created_at' => \Carbon\Carbon::now()->diffForHumans(),
-            'creator' => 'Daycode',
-        ]);
+            'user_id' => 1,
+        ]); 
+
+        $this->comments->prepend($createComment);
 
         $this->newComment = "";
     }
