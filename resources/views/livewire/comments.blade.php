@@ -3,10 +3,11 @@
         <div class="col-12">
             <h1 class="fw-bold">Comments</h1>
         </div>
+        @error('newComment') <span class="text-danger">{{ $message }}</span> @enderror
         <div class="col-12 mt-5">
             <form action="" wire:submit.prevent="addComment">
                 <div class="input-group mb-3">
-                    <input type="text" placeholder="What's in your mind" class="form-control" aria-describedby="button-addon2" wire:model.lazy="newComment">
+                    <input type="text" placeholder="What's in your mind" class="form-control" aria-describedby="button-addon2" wire:model.debounce.500ms="newComment">
                     <button class="btn btn-primary" type="submit" id="button-addon2">Add</button>
                 </div>
             </form>
