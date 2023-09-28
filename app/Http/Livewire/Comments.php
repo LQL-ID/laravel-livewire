@@ -18,6 +18,8 @@ class Comments extends Component
 
     public function addComment()
     {
+        if ($this->newComment == "") return;
+        
         array_unshift($this->comments, [
             'body' => $this->newComment,
             'created_at' => \Carbon\Carbon::now()->diffForHumans(),

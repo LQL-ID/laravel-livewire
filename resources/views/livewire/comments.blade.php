@@ -4,10 +4,12 @@
             <h1 class="fw-bold">Comments</h1>
         </div>
         <div class="col-12 mt-5">
-            <div class="input-group mb-3">
-                <input type="text" placeholder="What's in your mind" class="form-control" aria-describedby="button-addon2" wire:model="newComment">
-                <button class="btn btn-primary" type="button" id="button-addon2" wire:click="addComment">Add</button>
-            </div>
+            <form action="" wire:submit.prevent="addComment">
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="What's in your mind" class="form-control" aria-describedby="button-addon2" wire:model.lazy="newComment">
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Add</button>
+                </div>
+            </form>
         </div>
         <div class="col-12">
             @foreach($comments as $comment)
