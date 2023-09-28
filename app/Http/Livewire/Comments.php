@@ -13,8 +13,9 @@ class Comments extends Component
     /**
      * mounted functions.
      */
-    public function mount($initialComments)
+    public function mount()
     {
+        $initialComments = \App\Models\Comment::all();
         $this->comments = $initialComments;
     }
 
