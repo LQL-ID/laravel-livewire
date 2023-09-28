@@ -16,10 +16,10 @@
             <div class="card my-3">
                 <div class="card-body">
                     <div class="d-flex gap-3">
-                        <h5 class="card-title">{{ $comment['creator'] }}</h5>
-                        <span class="text-muted" style="font-size: 10pt">{{ $comment['created_at'] }}</span>
+                        <h5 class="card-title">{{ $comment->creator->name }}</h5>
+                        <span class="text-muted" style="font-size: 10pt">{{ $comment->created_at->diffForHumans() }}</span>
                     </div>
-                    <p class="card-text">{{ $comment['body'] }}</p>
+                    <p class="card-text">{{ $comment->body }}</p>
                 </div>
             </div>
             @endforeach

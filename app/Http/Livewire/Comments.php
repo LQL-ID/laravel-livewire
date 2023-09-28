@@ -6,16 +6,21 @@ use Livewire\Component;
 
 class Comments extends Component
 {
-    public $comments = [
-        [
-            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ex cupiditate quo commodi aspernatur delectus veniam necessitatibus.',
-            'created_at' => '3 min ago',
-            'creator' => 'Wirandra'
-        ]
-    ];
+    public $comments;
 
     public $newComment;
 
+    /**
+     * mounted functions.
+     */
+    public function mount($initialComments)
+    {
+        $this->comments = $initialComments;
+    }
+
+    /**
+     * add new comments functions.
+     */
     public function addComment()
     {
         if ($this->newComment == "") return;
