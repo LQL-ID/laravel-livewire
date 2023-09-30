@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use Livewire\Component;
 
 class Comments extends Component
@@ -24,6 +25,17 @@ class Comments extends Component
         $this->validateOnly($propertyName, [
             'newComment' => ['required', 'max:255']
         ], ['required' => 'Kolom Komentar Tidak Boleh Kosong', 'max' => 'Karakter tidak Boleh lebih dari :max Karakter']);
+    }
+
+    /**
+     * remove comment card functions.
+     */
+    public function removeCard($commentId)
+    {
+        $comment = Comment::find($commentId);
+        $comment->delete();
+
+        $this->comments = $this->comments->except($commentId);
     }
 
     /**

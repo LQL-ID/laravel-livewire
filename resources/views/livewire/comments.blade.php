@@ -16,9 +16,14 @@
             @foreach($comments as $comment)
             <div class="card my-3">
                 <div class="card-body">
-                    <div class="d-flex gap-3">
-                        <h5 class="card-title">{{ $comment->creator->name }}</h5>
-                        <span class="text-muted" style="font-size: 10pt">{{ $comment->created_at->diffForHumans() }}</span>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                            <h5 class="card-title">{{ $comment->creator->name }}</h5>
+                            <span class="text-muted" style="font-size: 10pt">{{ $comment->created_at->diffForHumans() }}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-times" id="remove-card" wire:click="removeCard({{$comment->id}})"></i>
+                        </div>
                     </div>
                     <p class="card-text">{{ $comment->body }}</p>
                 </div>
