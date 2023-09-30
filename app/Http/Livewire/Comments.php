@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Comment;
 use Livewire\Component;
 
 class Comments extends Component
@@ -32,7 +31,7 @@ class Comments extends Component
      */
     public function removeCard($commentId)
     {
-        $comment = Comment::find($commentId);
+        $comment = \App\Models\Comment::find($commentId);
         $comment->delete();
 
         $this->comments = $this->comments->except($commentId);
